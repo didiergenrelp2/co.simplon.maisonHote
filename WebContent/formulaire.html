@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Parallax Template - Materialize</title>
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen"/>
+        <link href="css/monStyle.css" type="text/css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <!--Navbar-->
+        <nav class="grey">
+            <div class="nav-wrapper container">
+                <a id="logo-container" class="brand-logo"><img src="school.png" alt="Logo"></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="index.html">Maison</a></li>
+                    <li><a href="region.html">Région</a></li>
+                    <li><a href="formulaire.html">Réservation</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="index.html">Maison</a></li>
+                    <li><a href="region.html">Région</a></li>
+                    <li><a href="formulaire.html">Réservation</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+        <!-- Formulaire  -->
+        <div class ="container">
+            <div class ="section">
+
+                <div class="row">
+                    <form class="col s12" action="FormulaireServlet" method="post">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix_nom" type="text" class="validate" required name="nom">
+                                <label for="icon_prefix_nom" class="active">Nom</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="icon_prefix_prenom" type="text" class="validate" name="prenom">
+                                <label for="icon_prefix_prenom" class="active">Prénom</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">phone</i>
+                                <input id="icon_telephone" type="tel" class="validate" name="telephone">
+                                <label for="icon_telephone" class="active">Téléphone</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" type="email" class="validate" required name="email">
+                                <label for="email" class="active">Email</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m4">
+                                <input id="nbNuit" type="number" class="validate" name="nbNuit">
+                                <label for="nbNuit" class="active">Nombre de nuits</label>
+                            </div>
+                            <!--Menu déroulant nombre personnes-->
+                            <div class="input-field col s12 m4"> 
+                                <select>
+                                    <option value="" disabled selected>Nombre de personnes</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                                <label>Nombre de personnes</label>
+                            </div>
+                            <!--Menu déroulant région-->
+                            <div class="input-field col s12 m4">
+                                <select>
+                                    <option value="" disabled selected>Région d'origine</option>
+                                    <option value="1">Alsace</option>
+                                    <option value="2">Aquitaine</option>
+                                    <option value="3">Auvergne</option>
+                                    <option value="4">Basse-Normandie</option>
+                                    <option value="5">Bourgogne</option>
+                                    <option value="6">Bretagne</option>
+                                    <option value="7">Centre</option>
+                                    <option value="8">Champagne-Ardenne</option>
+                                    <option value="9">Corse</option>
+                                    <option value="10">Franche-Comté</option>
+                                    <option value="11">Haute-Normandie</option>
+                                    <option value="12">Île-de-France</option>  
+                                    <option value="13">Languedoc-Roussillon</option>
+                                    <option value="14">Limousin</option>
+                                    <option value="15">Lorraine</option>
+                                    <option value="16">Midi-Pyrénées</option>
+                                    <option value="17">Nord-Pas-de-Calais</option>
+                                    <option value="18">Pays de la Loire</option>
+                                    <option value="19">Picardie</option>
+                                    <option value="20">Poitou-Charentes</option>
+                                    <option value="21">Provence-Alpes-Côte d'Azur</option>
+                                    <option value="22">Rhône-Alpes</option>
+                                </select>
+                                <label>Région d'origine</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <!--Checkbox options-->
+                            <div class="col s6">
+                                <fieldset>
+                                    <legend>Veuillez sélectionner vos options :</legend>
+                                    <div>
+                                        <input type="checkbox" id="parking" name="parking" value="parking">
+                                        <label for="parking" style="color:black">Parking</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="animal" name="animal" value="animal">
+                                        <label for="animal" style="color:black">Animal</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id="fumeur" name="fumeur" value="fumeur">
+                                        <label for="fumeur" style="color:black">Fumeur</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <!--Type Séjour radio bouton-->      
+                            <div class="col s4">
+                                <p>           
+                                    <input type="radio" name="TypeSejour" checked id="loisir"/>
+                                    <label for = "loisir" style="color:black">Loisir</label>
+                                </p>   
+                                <p>
+                                    <input type="radio" name="TypeSejour" id="professionnel"> 
+                                    <label for="professionnel" style="color:black">Professionnel</label>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!--Boutons-->
+                        <div class="row">
+                            <div class="col s6">
+                                <button class="btn waves-effect waves-light" type="submit" name="action" id="boutonEstimation">Estimation prix
+                                    <i class="material-icons right">euro_symbol</i>
+                                </button> 
+                            </div>
+                            <div class="col s6">
+                                <button class="btn waves-effect waves-light" type="submit" name="envoyer">Envoyer
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--Affichage estimation du prix-->
+                        <div class="col s3">
+                            <div id="estimation"></div>                                    
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/jshotel.js"></script>
+
+
+    </body>
+</html>
