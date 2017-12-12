@@ -6,6 +6,60 @@ public class Reservation {
 	private String prenom;
 	private String telephone;
 	private String email;
+	private String nbNuit;
+	private String nbPersonne;
+	private String typeSejour;
+	private String animal;
+	private String fumeur;
+	private String parking;
+	
+	public String getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(String animal) {
+		this.animal = animal;
+	}
+
+	public String getFumeur() {
+		return fumeur;
+	}
+
+	public void setFumeur(String fumeur) {
+		this.fumeur = fumeur;
+	}
+
+	public String getParking() {
+		return parking;
+	}
+
+	public void setParking(String parking) {
+		this.parking = parking;
+	}
+
+	public String getNbNuit() {
+		return nbNuit;
+	}
+
+	public void setNbNuit(String nbNuit) {
+		this.nbNuit = nbNuit;
+	}
+
+	public String getNbPersonne() {
+		return nbPersonne;
+	}
+
+	public void setNbPersonne(String nbPersonne) {
+		this.nbPersonne = nbPersonne;
+	}
+
+	public String getTypeSejour() {
+		return typeSejour;
+	}
+
+	public void setTypeSejour(String typeSejour) {
+		this.typeSejour = typeSejour;
+	}
 	
 	public String getNom() {
 		return nom;

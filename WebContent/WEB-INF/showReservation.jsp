@@ -13,27 +13,41 @@
 <% Reservation reservation = (Reservation) request.getAttribute("reservation");%>
 		<h1>Félicitation</h1>
 		<p>Votre réservation a été enregistrée avec les informations suivantes :</p>
-		<table class="resultTable">			
+		
+		<table border=1 class="reservationTable">
 			<tr>
-				<td>Nom</td>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Telephone</th>
+				<th>Email</th>
+				<th>Nombre de nuit(s)</th>
+				<th>Nombre de personnes(s)</th>
+				<th>Type de séjour</th>
+				<th>Option Animal</th>
+				<th>Option Fumeur</th>
+				<th>Option Parking</th>
+			</tr>
+			<tr>
 				<td><%=reservation.getNom()%></td>
-			</tr>
-			<tr>
-				<td>Prénom</td>
 				<td><%=reservation.getPrenom()%></td>
-			</tr>
-			<tr>
-				<td>Téléphone</td>
 				<td><%=reservation.getTelephone()%></td>
-			</tr>
-			<tr>
-				<td>Email</td>
 				<td><%=reservation.getEmail()%></td>
+				<td><%=reservation.getNbNuit()%></td>
+				<td><%=reservation.getNbPersonne()%></td>
+				<td><%=reservation.getTypeSejour()%></td>
+				<td><%if(reservation.getAnimal()==null) out.println("Non");
+						else out.println("Oui");%></td>
+				<td><%if(reservation.getFumeur()==null) out.println("Non");
+						else out.println("Oui");%></td>
+				<td><%if(reservation.getParking()==null) out.println("Non");
+						else out.println("Oui");%></td>
 			</tr>
+			
+			
 		</table>
 		<a href="index.html" >Retour</a>
 		<br>
-		<a href="Reservation">Réservations effectuées</a>
+		<a href="FormulaireServlet">Réservations effectuées</a>
 		
 		
 	</body>
