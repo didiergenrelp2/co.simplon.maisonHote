@@ -1,7 +1,10 @@
 package co.simplon.maisonHote;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import co.simplon.maisonHote.Jdbc;
 import co.simplon.maisonHote.Reservation;
 import co.simplon.maisonHote.ReservationInterface;
 import co.simplon.maisonHote.ReservationImplement;
@@ -18,13 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/FormulaireServlet")
 public class FormulaireServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ArrayList<Reservation> listeReserv;
+	Jdbc baseDonnees = new Jdbc();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public FormulaireServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -33,12 +37,29 @@ public class FormulaireServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Récupération des reservations effectuées de la map
+		// request.setAttribute("reservations",
+		// ReservationManager.getInstance().getReservations().values());
 
-		// Récupération des reservations effectuées
-				request.setAttribute("reservations", ReservationManager.getInstance().getReservations().values());
-				
-				getServletContext().getRequestDispatcher("/WEB-INF/listeReserv.jsp").forward(request, response);
+		// connection BdD
+		try {
+			baseDonnees.connectToDB();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		// Affichage données de la base
+		try {
+			listeReserv = baseDonnees.showData();
+			request.setAttribute("reservations", listeReserv);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
+		baseDonnees.closeDB();
+
+		getServletContext().getRequestDispatcher("/WEB-INF/listeReserv.jsp").forward(request, response);
 	}
 
 	/**
@@ -47,6 +68,7 @@ public class FormulaireServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 
 		// recuperation des données du formulaire
 		String paramNom = request.getParameter("nom");
@@ -72,15 +94,31 @@ public class FormulaireServlet extends HttpServlet {
 		reservation.setAnimal(paramAnimal);
 		reservation.setFumeur(paramFumeur);
 		reservation.setParking(paramParking);
-		
+
 		ReservationManager.getInstance().addReservation(reservation);
+		try {
+			baseDonnees.connectToDB();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		// Ajout de la réservation dans la base de données
+		try {
+			baseDonnees.insertData(paramNom, paramPrenom, paramTel, paramEmail, paramNbNuit, paramNbPersonne,
+					paramTypeSejour, paramAnimal, paramFumeur, paramParking);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		baseDonnees.closeDB();
 
 		request.setAttribute("reservation", reservation);
 		// Récupération des reservations
 		request.setAttribute("reservations", ReservationManager.getInstance().getReservations().values());
 		this.getServletContext().getRequestDispatcher("/WEB-INF/showReservation.jsp").forward(request, response);
 
-		
 	}
 
 }
